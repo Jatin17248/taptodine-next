@@ -1,6 +1,6 @@
 "use client"
 import React from "react";
-import { useRouter } from "next/navigation";
+ 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -79,7 +79,7 @@ type NewItem = { name: string; price: string };
 
 const [menuItems, setMenuItems] = React.useState<MenuItem[]>([]);
 const [newItem, setNewItem] = React.useState<NewItem>({ name: "", price: "" });
-const [orders, setOrders] = React.useState<any[]>([]);
+ 
 
 const fetchMenu = async (id: string) => {
   try {
