@@ -11,7 +11,7 @@ import OrdersTab from "@/components/OrdersTab";
 
 const RestaurantDashboard = () => {
 
-const API_HOST = process.env.NEXT_PUBLIC_API_HOST || "http://localhost:5000";
+const API_HOST = process.env.NEXT_PUBLIC_API_HOST || "https://taptodine-api.vercel.app";
 
 const [isAuthenticated, setIsAuthenticated] = React.useState(false);
 const [authType, setAuthType] = React.useState<"login" | "register">("login");
@@ -74,7 +74,12 @@ const handleLogOut = async () => {
       
     }  
 
-type MenuItem = { id?: string; name: string; price: number };
+ 
+type MenuItem = {
+  id?: string;
+  name: string;
+  price: number;
+};
 type NewItem = { name: string; price: string };
 
 const [menuItems, setMenuItems] = React.useState<MenuItem[]>([]);
@@ -128,11 +133,44 @@ const handleAddItem = async () => {
   }
 };
 
-const handleEditItem = async (index: number, field: keyof MenuItem, value: string) => {
+// const handleEditItem = async (index: number, field: keyof MenuItem, value: string) => {
+//   const updatedItems = [...menuItems];
+//   const itemToEdit = updatedItems[index];
+
+//   itemToEdit[field] = field === "price" ? parseFloat(value) : value;
+//   setMenuItems(updatedItems);
+
+//   if (itemToEdit.id) {
+//     try {
+//       await fetch(`${API_HOST}/menu/${itemToEdit.id}`, {
+//         method: "PUT",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({
+//           name: itemToEdit.name,
+//           price: itemToEdit.price,
+//         }),
+//       });
+//     } catch (err) {
+//       console.error("Error editing item:", err);
+//     }
+//   }
+// };
+
+ 
+const handleEditItem = async (
+  index: number,
+  field: keyof MenuItem,
+  value: string
+) => {
   const updatedItems = [...menuItems];
   const itemToEdit = updatedItems[index];
 
-  itemToEdit[field] = field === "price" ? parseFloat(value) : value;
+  if (field === "price") {
+    itemToEdit.price = parseFloat(value);
+  } else if (field === "name") {
+    itemToEdit.name = value;
+  }
+
   setMenuItems(updatedItems);
 
   if (itemToEdit.id) {
@@ -150,6 +188,8 @@ const handleEditItem = async (index: number, field: keyof MenuItem, value: strin
     }
   }
 };
+
+
 
 const handleDeleteItem = async (index: number) => {
   const itemToDelete = menuItems[index];
@@ -244,14 +284,7 @@ const handleDeleteItem = async (index: number) => {
         </TabsList>
 
         <TabsContent value="orders">
-          {/* <Card>
-            <CardHeader>
-              <CardTitle>Real-Time Orders</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>No orders yet. Real-time functionality will be added in Phase 2.</p>
-            </CardContent>
-          </Card> */}
+           
           <OrdersTab restaurantId={restaurantId}/>
 
         </TabsContent>
