@@ -4,22 +4,7 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue } from "firebase/database";
-
-// Firebase config (replace with yours)
-let firebaseConfig: any = {};
-if (typeof window !== 'undefined') {
-  const base64 = process.env.NEXT_PUBLIC_GOOGLE_CONFIG;
-  if (base64) {
-    try {
-      const jsonString = atob(base64); // browser-friendly decoding
-      firebaseConfig = JSON.parse(jsonString);
-    } catch (error) {
-      console.error("Invalid Firebase config:", error);
-    }
-  } else {
-    console.warn("NEXTPUBLIC_GOOGLE_CONFIG not found");
-  }
-}
+import firebaseConfig from "./firebaseConfig";
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
