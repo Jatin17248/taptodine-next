@@ -98,14 +98,7 @@ const fetchMenu = async (id: string) => {
   }
 };
 
-// const subscribeToOrders = (restaurantId: string) => {
-//   const ws = new WebSocket(`ws://localhost:5000/orders/${restaurantId}`); // Adjust to deployed URL
-//   ws.onmessage = (event) => {
-//     const data = JSON.parse(event.data);
-//     if (Array.isArray(data)) setOrders(data);
-//   };
-//   ws.onerror = (err) => console.error("WebSocket error:", err);
-// };
+ 
 
 const handleAddItem = async () => {
   if (!newItem.name || !newItem.price || !restaurantId) return;
@@ -133,28 +126,7 @@ const handleAddItem = async () => {
   }
 };
 
-// const handleEditItem = async (index: number, field: keyof MenuItem, value: string) => {
-//   const updatedItems = [...menuItems];
-//   const itemToEdit = updatedItems[index];
-
-//   itemToEdit[field] = field === "price" ? parseFloat(value) : value;
-//   setMenuItems(updatedItems);
-
-//   if (itemToEdit.id) {
-//     try {
-//       await fetch(`${API_HOST}/menu/${itemToEdit.id}`, {
-//         method: "PUT",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({
-//           name: itemToEdit.name,
-//           price: itemToEdit.price,
-//         }),
-//       });
-//     } catch (err) {
-//       console.error("Error editing item:", err);
-//     }
-//   }
-// };
+ 
 
  
 const handleEditItem = async (
@@ -337,7 +309,7 @@ const handleDeleteItem = async (index: number) => {
             </CardHeader>
             <CardContent className="flex flex-col items-center" id="print-area">
               <h2 className="text-lg font-semibold mb-2">{restaurantName || "My Restaurant"}</h2>
-              <QRCode value={`https://taptodine.com/order/${restaurantId}`} />
+              <QRCode value={`https://taptodine-next.vercel.app/order/${restaurantId}`} />
               <p className="text-sm mt-4">Scan to view menu and order</p>
             </CardContent>
           </Card>
