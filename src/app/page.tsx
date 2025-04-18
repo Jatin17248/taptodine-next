@@ -17,18 +17,18 @@ const HomePage: React.FC = () => {
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
           The Best Restaurant Menu App
         </h1>
-        <p className="text-lg md:text-xl text-gray-300 mb-8">
+        <p className="text-lg md:text-xl text-gray-500 mb-8">
           Discover TapToDine – Your digital menu solution to explore, order, and enjoy food with ease.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
          <Link href="restaurant">
-          <Button size="lg" className="text-lg px-8 py-6  hover:bg-amber-600 ">
-            Get OnBoard
+          <Button size="lg" className="text-lg px-8 py-6   ">
+          For Restaurants
           </Button></Link>
           <Link href="restaurant">
-          <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-amber-400  hover:bg-amber-100/10">
-            Download App
+          <Button size="lg" variant="outline" className="text-lg px-8 py-6 ">
+          Get the App
           </Button>
           </Link>
         </div>

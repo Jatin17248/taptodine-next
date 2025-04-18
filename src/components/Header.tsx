@@ -25,12 +25,12 @@ const Header = () => {
     <header className="w-full border-b shadow-sm bg-white dark:bg-zinc-900 sticky top-0 z-50">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         {/* Logo */}
-        <Link href="/" className="text-xl font-bold text-blue-600 dark:text-white">
+        <Link href="/" className="text-xl font-bold ">
          TapToDine
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-6 items-center">
+        {/* <nav className="hidden md:flex gap-6 items-center">
           <Link href="/about" className="text-sm font-medium hover:text-blue-500 dark:hover:text-blue-400">
             About
           </Link>
@@ -40,10 +40,10 @@ const Header = () => {
           <Link href="/contact" className="text-sm font-medium hover:text-blue-500 dark:hover:text-blue-400">
             Contact
           </Link>
-        </nav>
+        </nav> */}
 
         {/* Actions */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
           {/* Dark Mode Toggle */}
           {mounted && theme && (
   <Button
@@ -59,7 +59,7 @@ const Header = () => {
           
 
           {/* Mobile Menu */}
-          <div className="md:hidden">
+          {/* <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -81,7 +81,7 @@ const Header = () => {
                 </nav>
               </SheetContent>
             </Sheet>
-          </div>
+          </div> */}
         </div>
       </div>
     </header>
